@@ -1,0 +1,244 @@
+import { motion } from "framer-motion";
+import { useCursorStore } from "../store/useCursorStore";
+import ParallaxImage from "../components/parallax-image";
+import { NavLink } from "react-router-dom";
+import { useThemeStore } from "../store/useThemeStore";
+
+const item = {
+    initial: { y: "2rem", opacity: 0 },
+    animate: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            duration: 1,
+            ease: [0.2, 1, 0.4, 1] as const
+        }
+    },
+};
+
+export default function Home() {
+    const set = useCursorStore((state) => state.setCursorType);
+    const { theme } = useThemeStore();
+
+    return (
+        <motion.main
+            className="pb-[10vh] overflow-y-scroll snap-y snap-mandatory"
+            exit={{ opacity: 0, filter: "blur(1px)" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+            {/* about */}
+            <motion.section
+                className="relative w-screen pt-[17.5vh] pl-[10vw] flex flex-col lg:pt-[15vh] lg:pl-[15vw] lg:flex-row lg:items-center lg:gap-[10vw] snap-center"
+                initial={{ opacity: 0, filter: "blur(1px)" }}
+                whileInView={{ opacity: 1, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+            >
+                <div className="w-[80vw] lg:w-[35vw] lg:h-[clamp(20rem,60vh,40rem)] flex flex-col items-start justify-between font-light leading-none">
+                    <div>
+                        <div className="text-[clamp(3rem,6.5vw,7rem)] md:text-[clamp(4rem,7vw,8rem)] font-light lg:font-thin">
+                            <div className="h-auto overflow-hidden">
+                                <motion.h1
+                                    className="flex gap-[clamp(0.1rem,0.2vw,0.2rem)]"
+                                    initial="initial"
+                                    whileInView="animate"
+                                    viewport={{ once: true }}
+                                    transition={{
+                                        staggerChildren: 0.08,
+                                        delayChildren: 0.7,
+                                    }}
+                                >
+                                    <motion.span variants={item}>A</motion.span>
+                                    <motion.span variants={item}>B</motion.span>
+                                    <motion.span variants={item}>H</motion.span>
+                                    <motion.span variants={item}>A</motion.span>
+                                    <motion.span variants={item}>Y</motion.span>
+                                </motion.h1>
+                            </div>
+                            <div className="h-auto overflow-hidden">
+                                <motion.h1
+                                    className="flex gap-[clamp(0.1rem,0.2vw,0.2rem)]"
+                                    initial="initial"
+                                    whileInView="animate"
+                                    viewport={{ once: true }}
+                                    transition={{
+                                        staggerChildren: 0.08,
+                                        delayChildren: 1,
+                                    }}
+                                >
+                                    <motion.span variants={item}>T</motion.span>
+                                    <motion.span variants={item}>O</motion.span>
+                                    <motion.span variants={item}>P</motion.span>
+                                    <motion.span variants={item}>N</motion.span>
+                                    <motion.span variants={item}>O</motion.span>
+                                </motion.h1>
+                            </div>
+                        </div>
+
+                        <div className="text-[clamp(0.8rem,1.2vw,1.5rem)] pl-1 lg:pl-2">
+                            <p>Full Stack Developer</p>
+                            <p>DevOps</p>
+                            <p>GenAI</p>
+                        </div>
+                    </div>
+                    <div className="pl-1 mt-[10vh] lg:pl-2 flex flex-col items-start justify-start text-[clamp(0.8rem,1.2vw,1.5rem)] leading-tight">
+                        <p>For business inquiries, email me at</p>
+                        <Email />
+                    </div>
+                </div>
+
+                <div className="lg:h-[clamp(20rem,60vh,40rem)] flex flex-col items-start justify-end">
+                    <div className="h-[10vh] lg:h-[15vh] flex items-end text-[clamp(1rem,1.5vw,2rem)] font-light mb-1">
+                        <h1>ABOUT ME</h1>
+                    </div>
+
+                    <div className="w-[80vw] lg:w-[35vw] h-[1px] bg-[#888888aa]" />
+
+                    <div className="w-[80vw] lg:w-[35vw] flex flex-col pt-[5vh] lg:pt-[clamp(1rem,7.5vh,3rem)] text-[clamp(0.7rem,1vw,1.2rem)] tracking-[0.1rem] font-light gap-1 leading-[clamp(1.1rem,3vh,1.4rem)]">
+                        <p>I am currently pursuing my B.Tech in Electronics and Communications Engineering at National Institute of Technology, Jamshedpur (July 2023 &ndash; July 2027).</p>
+                        <p>My main focus is full-stack web development, DevOps, and integrating Gen AI into web platforms. I enjoy exploring new technologies and building scalable applications.</p>
+                        <p>Previously, I completed my Class-12th ICSE at De Nobili School, C.M.R.I., Dhanbad.</p>
+                    </div>
+                </div>
+            </motion.section>
+
+            {/* motivation */}
+            <motion.section
+                className="relative w-screen pt-[5vh] pl-[10vw] lg:pt-[clamp(5rem,15vh,10rem)] lg:pl-[15vw] flex flex-col lg:flex-row lg:items-center lg:gap-[10vw] snap-center"
+                initial={{ opacity: 0, filter: "blur(1px)" }}
+                whileInView={{ opacity: 1, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+            >
+                <div className="lg:h-[clamp(20rem,60vh,40rem)] flex flex-col items-start justify-start">
+                    <div className="h-[15vh] flex items-end text-[clamp(1rem,1.5vw,2rem)] font-light mb-1">
+                        <h1>MOTIVATION</h1>
+                    </div>
+
+                    <div className="w-[80vw] lg:w-[35vw] h-[1px] bg-[#888888aa]" />
+
+                    <div className="w-[80vw] lg:w-[35vw] flex flex-col pt-[5vh] lg:pt-[clamp(1rem,7.5vh,3rem)] text-[clamp(0.7rem,1vw,1.2rem)] tracking-[0.1rem] font-light gap-1 leading-[clamp(1.1rem,3vh,1.4rem)]">
+                        <p>I am actively involved in open-source, including my contributions to the OWASP Foundation &ndash; Nest Project where I refactored GraphQL queries and improved the slackbot.</p>
+                        <p>I have also achieved recognition as a Semi-Finalist in the Gen AI Exchange Hackathon 2025 by Google Cloud, and hold titles of Knight on LeetCode and Specialist on Codeforces.</p>
+                        <p>Currently, I serve as Head of Web Development for SECE and the REVANTA Technical Team at NIT Jamshedpur.</p>
+                    </div>
+                </div>
+
+                <ParallaxImage
+                    src="/wallhaven-85p79o_1920x1080.png"
+                    alt="Abhay Topno"
+                    classname="mt-[5vh] w-[80vw] aspect-[8/5] lg:w-[35vw] lg:aspect-[8/5] flex items-center justify-center overflow-hidden"
+                    hover="default"
+                />
+            </motion.section>
+
+            {/* skills */}
+            <motion.section
+                className="relative w-screen pt-[5vh] pl-[10vw] lg:pt-[clamp(2rem,5vh,5rem)] lg:pl-[15vw] flex flex-col snap-center"
+                initial={{ opacity: 0, filter: "blur(1px)" }}
+                whileInView={{ opacity: 1, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+            >
+
+                <div className="w-[80vw] lg:w-[75vw] flex flex-col items-start justify-start">
+                    <div className="h-[15vh] flex items-end text-[clamp(1rem,1.5vw,2rem)] font-light mb-1">
+                        <h1>SKILLS</h1>
+                    </div>
+
+                    <div className="w-[80vw] lg:w-[75vw] h-[1px] bg-[#888888aa]" />
+
+                    <div className="mt-[5vh] w-[80vw] lg:w-[75vw] flex flex-col items-start justify-start gap-10 lg:flex-row lg:items-start lg:justify-between">
+                        <div className="flex flex-col w-[80vw] lg:w-[25vw] gap-3 font-light">
+                            <div className="text-[clamp(1rem,1.5vw,2rem)] h-auto tracking-wide">
+                                <h2>FRONTEND</h2>
+                            </div>
+                            <div className="w-full text-[clamp(0.8rem,1.2vw,1rem)] flex flex-wrap gap-2">
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>TypeScript</p>
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>JavaScript</p>
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>React.js</p>
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>Next.js</p>
+                            </div>
+                        </div>
+                        <div className="flex flex-col w-[80vw] lg:w-[20vw] gap-3 font-light">
+                            <div className="text-[clamp(1rem,1.5vw,2rem)] h-auto tracking-wide">
+                                <h2>BACKEND</h2>
+                            </div>
+                            <div className="w-full text-[clamp(0.8rem,1.2vw,1rem)] flex flex-wrap gap-2">
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>Node.js</p>
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>Express.js</p>
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>Django</p>
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>FastAPI</p>
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>MongoDB</p>
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>PostgreSQL</p>
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>MySQL</p>
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>Redis</p>
+                            </div>
+                        </div>
+                        <div className="flex flex-col w-[80vw] lg:w-[20vw] gap-3 font-light">
+                            <div className="text-[clamp(1rem,1.5vw,2rem)] h-auto tracking-wide">
+                                <h2>DEVOPS / AI</h2>
+                            </div>
+                            <div className="w-full text-[clamp(0.8rem,1.2vw,1rem)] flex flex-wrap gap-2">
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>Docker</p>
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>Kubernetes</p>
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>Terraform</p>
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>Jenkins</p>
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>GitHub Actions</p>
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>LangChain</p>
+                                <p className={`w-fit h-fit p-1 px-5 m-1 border border-[#888888aa] rounded-full duration-500 ${theme === "dark" ? "hover:bg-white hover:text-[#101010]" : "hover:bg-black hover:text-[#ffffffcc]"}`}>LangGraph</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="ml-auto flex flex-col items-end justify-center gap-4 mt-[15vh]">
+                        <NavLink
+                            to="/Works"
+                            className="flex flex-row items-center justify-center gap-2 text-[clamp(1rem,1.5vw,2rem)] font-light"
+                            onMouseEnter={() => set("hover")}
+                            onMouseLeave={() => set("default")}
+                        >
+                            <span>WORKS</span>
+                            <span>
+                                <svg width="clamp(1rem,1.5vw,2rem)" height="clamp(1rem,1.5vw,2rem)" viewBox="0 0 102 102" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="0.204656" y1="50.2071" x2="100.205" y2="50.2071" stroke={`${theme === "dark" ? "white" : "#101010cc"}`} strokeWidth="4" />
+                                    <line x1="65.4073" y1="15.2028" x2="100.763" y2="50.5581" stroke={`${theme === "dark" ? "white" : "#101010cc"}`} strokeWidth="4" />
+                                    <line x1="65.4073" y1="85.2064" x2="100.763" y2="49.851" stroke={`${theme === "dark" ? "white" : "#101010cc"}`} strokeWidth="4" />
+                                </svg>
+                            </span>
+                        </NavLink>
+                        <NavLink
+                            to="/Gallery"
+                            className="flex flex-row items-center justify-center gap-2 text-[clamp(1rem,1.5vw,2rem)] font-light"
+                            onMouseEnter={() => set("hover")}
+                            onMouseLeave={() => set("default")}
+                        >
+                            <span>ALBUMS</span>
+                            <span>
+                                <svg width="clamp(1rem,1.5vw,2rem)" height="clamp(1rem,1.5vw,2rem)" viewBox="0 0 102 102" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="0.204656" y1="50.2071" x2="100.205" y2="50.2071" stroke={`${theme === "dark" ? "white" : "#101010cc"}`} strokeWidth="4" />
+                                    <line x1="65.4073" y1="15.2028" x2="100.763" y2="50.5581" stroke={`${theme === "dark" ? "white" : "#101010cc"}`} strokeWidth="4" />
+                                    <line x1="65.4073" y1="85.2064" x2="100.763" y2="49.851" stroke={`${theme === "dark" ? "white" : "#101010cc"}`} strokeWidth="4" />
+                                </svg>
+                            </span>
+                        </NavLink>
+                    </div>
+                </div>
+            </motion.section>
+        </motion.main>
+    )
+}
+
+function Email() {
+    const set = useCursorStore((state) => state.setCursorType);
+    return (
+        <a
+            href="mailto:abhaytopno999@gmail.com"
+            aria-label="Send an email to Abhay Topno"
+            onMouseEnter={() => set("hover")}
+            onMouseLeave={() => set("default")}
+        >
+            abhaytopno999@gmail.com
+        </a>
+    )
+}
