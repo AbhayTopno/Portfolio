@@ -1,25 +1,26 @@
 @import "tailwindcss";
+
 * {
   cursor: none !important;
 }
 
-/* Chrome / Safari / Edge */
 ::-webkit-scrollbar {
   display: none;
 }
 
-/* Firefox */
 html {
   scrollbar-width: none;
 }
 
-/* IE / old Edge */
 body {
   -ms-overflow-style: none;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
 }
 
 :root {
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -31,14 +32,6 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 .cursive {

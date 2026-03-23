@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import { useCursorStore } from "../store/useCursorStore";
 import type { CursorType } from "../store/useCursorStore";
+import type { TargetAndTransition } from "framer-motion";
 
-const cursorVariants: Record<CursorType | "hidden", any> = {
+const cursorVariants: Record<CursorType | "hidden", TargetAndTransition> = {
     "default": {
         scale: 1,
         backgroundColor: "transparent"

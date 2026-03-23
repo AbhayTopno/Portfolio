@@ -1,6 +1,8 @@
+"use client";
+
 import { motion } from "framer-motion";
 
-export default function() {
+export default function NotFound() {
     return (
         <motion.main
             className="w-screen h-screen px-[10vw] lg:pl-[15vw] lg:pr-[10vw] flex items-center justify-center"

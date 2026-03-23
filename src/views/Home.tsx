@@ -1,7 +1,9 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { useCursorStore } from "../store/useCursorStore";
 import ParallaxImage from "../components/parallax-image";
-import { NavLink } from "react-router-dom";
+import Link from "next/link";
 import { useThemeStore } from "../store/useThemeStore";
 
 const item = {
@@ -192,8 +194,8 @@ export default function Home() {
                     </div>
 
                     <div className="ml-auto flex flex-col items-end justify-center gap-4 mt-[15vh]">
-                        <NavLink
-                            to="/Works"
+                        <Link
+                            href="/works"
                             className="flex flex-row items-center justify-center gap-2 text-[clamp(1rem,1.5vw,2rem)] font-light"
                             onMouseEnter={() => set("hover")}
                             onMouseLeave={() => set("default")}
@@ -206,9 +208,9 @@ export default function Home() {
                                     <line x1="65.4073" y1="85.2064" x2="100.763" y2="49.851" stroke={`${theme === "dark" ? "white" : "#101010cc"}`} strokeWidth="4" />
                                 </svg>
                             </span>
-                        </NavLink>
-                        <NavLink
-                            to="/Gallery"
+                        </Link>
+                        <Link
+                            href="/gallery"
                             className="flex flex-row items-center justify-center gap-2 text-[clamp(1rem,1.5vw,2rem)] font-light"
                             onMouseEnter={() => set("hover")}
                             onMouseLeave={() => set("default")}
@@ -221,7 +223,7 @@ export default function Home() {
                                     <line x1="65.4073" y1="85.2064" x2="100.763" y2="49.851" stroke={`${theme === "dark" ? "white" : "#101010cc"}`} strokeWidth="4" />
                                 </svg>
                             </span>
-                        </NavLink>
+                        </Link>
                     </div>
                 </div>
             </motion.section>

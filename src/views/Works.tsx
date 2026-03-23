@@ -1,7 +1,9 @@
+"use client";
+
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useCursorStore } from "../store/useCursorStore";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const works = [
     {id: 1, title: "POPQUIZ", sub: "Personal Project / Full Stack", description: "AI Powered Scalable Quiz Hosting Platform offering solo and multiplayer modes powered by LangChain and real-time gameplay."},
@@ -26,7 +28,7 @@ export default function Works() {
                 >
                     <Link
                         key="1"
-                        to="/Works/1"
+                        href="/works/1"
                         className="relative w-[40vw] aspect-[2/1] flex items-center justify-center"
                         onMouseEnter={() => set("VIEW")}
                         onMouseLeave={() => set("default")}
@@ -60,7 +62,7 @@ export default function Works() {
                 
                 <Link
                     key="2"
-                    to="/Works/2"
+                    href="/works/2"
                     className="relative w-[40vw] aspect-[2/1] flex items-center justify-center"
                     onMouseEnter={() => set("VIEW")}
                     onMouseLeave={() => set("default")}
@@ -100,7 +102,7 @@ export default function Works() {
                     animate={{ opacity: 1, filter: "blur(0px)" }}
                     transition={{ duration: 1.2, ease: "easeOut" }}
                 >
-                    <Link key="1" to="/Works/1" className="relative w-[70vw] aspect-[2/1] flex items-center justify-center">
+                    <Link key="1" href="/works/1" className="relative w-[70vw] aspect-[2/1] flex items-center justify-center">
                         <img
                             src="/black_bg.webp"
                             alt="Background"
@@ -130,7 +132,7 @@ export default function Works() {
                     onViewportEnter={() => setFocus(works[1])}
                     viewport={{ amount: "some", margin: "-50% 0px -50% 0px" }}
                 >
-                    <Link key="2" to="/Works/2" className="relative w-[70vw] aspect-[2/1] flex items-center justify-center">
+                    <Link key="2" href="/works/2" className="relative w-[70vw] aspect-[2/1] flex items-center justify-center">
                         <img
                             src="/sea_bg.webp"
                             alt="Background"

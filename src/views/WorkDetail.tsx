@@ -1,22 +1,26 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { useParams, NavLink, Link } from "react-router-dom";
+import Link from "next/link";
 import { projects } from "../components/projects";
 import Media from "../components/media";
 import { useCursorStore } from "../store/useCursorStore";
 import { useThemeStore } from "../store/useThemeStore";
-import NotFound from "./NotFound";
 
-export default function WorkDetail() {
-    const { id } = useParams();
+type Props = {
+    id: string;
+}
+
+export default function WorkDetail({ id }: Props) {
+    const set = useCursorStore((state) => state.setCursorType);
+    const { theme } = useThemeStore();
+
     const data = projects.find((p) => p.id === id);
     const nextData = projects.find((p) => p.id === data?.next);
 
     if (!data) {
-        return <NotFound />;
+        return null;
     }
-
-    const set = useCursorStore((state) => state.setCursorType);
-    const { theme } = useThemeStore();
 
     return (
         <motion.main
@@ -24,7 +28,7 @@ export default function WorkDetail() {
             exit={{ opacity: 0, filter: "blur(1px)" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
         >
-            <NavLink to="/Works">
+            <Link href="/works">
                 <motion.div
                     className="sm:landscape:hidden md:landscape:hidden lg:landscape:flex fixed top-[10vh] left-[5vw] lg:top-[5vh] lg:left-[15vw] text-[clamp(0.6rem,1vw,1.5rem)] md:text-[clamp(1rem,1.5vw,1.5rem)] font-light flex flex-row items-center gap-1 z-10"
                     initial={{ opacity: 0, filter: "blur(1px)" }}
@@ -41,7 +45,7 @@ export default function WorkDetail() {
                     </span>
                     <span>BACK</span>
                 </motion.div>
-            </NavLink>
+            </Link>
 
             <motion.div
                 className="lg:hidden landscape:hidden fixed top-[10vh] right-[5vw] text-[clamp(0.6rem,1vw,1.5rem)] md:text-[clamp(1rem,1.5vw,1.5rem)] font-light flex flex-col items-end justify-start gap-1 z-10"
@@ -263,7 +267,7 @@ export default function WorkDetail() {
 
                         <Link
                             key={nextData?.id}
-                            to={`/Works/${nextData?.id}`}
+                            href={`/works/${nextData?.id}`}
                             onMouseEnter={() => set("hover")}
                             onMouseLeave={() => set("default")}
                             className="flex flex-row items-center justify-end text-[clamp(0.8rem,1vw,1.2rem)] md:text-[clamp(1.1rem,2vw,2rem)] font-light mt-auto ml-auto gap-2"

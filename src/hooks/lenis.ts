@@ -30,6 +30,4 @@ export const useLenis = () => {
             lenisRef.current = null;
         };
     }, []);
-
-    return lenisRef.current;
 };

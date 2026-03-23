@@ -19,7 +19,7 @@ export default function MouseEffectScene() {
 };
 
 function Smoke() {
-    const ref          = useRef<any>(null);
+    const ref          = useRef<THREE.ShaderMaterial | null>(null);
     const prevMouse    = useRef<[number, number]>([2, 2]);
     const currentMouse = useRef<[number, number]>([2, 2]);
 
